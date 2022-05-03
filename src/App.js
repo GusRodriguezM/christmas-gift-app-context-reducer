@@ -25,6 +25,12 @@ export const App = () => {
     reset();
   }
 
+  const handleDeleteGift = (id) => {
+    console.log(id);
+    const auxGifts = gifts.filter(gift => gift.id !== id);
+    setGifts(auxGifts);
+  }
+
   console.log(gifts);
 
   return (
@@ -55,6 +61,12 @@ export const App = () => {
             gifts.map(gift => (
               <li key={gift.id}>
                 {gift.name}
+
+                <button
+                  onClick={() => handleDeleteGift(gift.id)}
+                >
+                  Delete
+                </button>
               </li>
             ))
           }
