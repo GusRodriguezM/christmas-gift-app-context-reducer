@@ -12,15 +12,18 @@ export const App = () => {
   return (
     <div className='App'>
 
-      <h1>Gifts</h1>
+      <div className='list'>
+        <h1>Gifts</h1>
 
-      {
-        gifts.map(gift => (
-          <ul key={gift.id}>
-            {gift.name}
-          </ul>
-        ))
-      }
+        {
+          gifts.map(gift => (
+            <ul key={gift.id}>
+              {gift.name}
+            </ul>
+          ))
+        }
+      </div>
+      
     </div>
   );
 }
