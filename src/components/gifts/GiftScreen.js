@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 
-import { useState } from 'react';
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
+import { giftsReducer } from '../../reducers/giftsReducer';
+
+const initialState = [
+    {id: 1, name: 'socks'},
+    {id: 2, name: 'ugly sweater'},
+    {id: 3, name: 'Santa\'s hat'},
+    {id: 4, name: 'snow sled'},
+    {id: 5, name: 'snowball gun'}
+];
 
 export const GiftScreen = () => {
 
-    const [gifts, setGifts] = useState([
-        {id: 1, name: 'socks'},
-        {id: 2, name: 'ugly sweater'},
-        {id: 3, name: 'Santa\'s hat'},
-        {id: 4, name: 'snow sled'},
-        {id: 5, name: 'snowball gun'},
-    ]);
+    const [gifts, dispatch] = useReducer(giftsReducer, initialState);
     
     const handleAddGift = (newGift) => {
-        setGifts([...gifts, newGift]);
-    }
-    
-    const handleDeleteGift = (id) => {
-        console.log(id);
-        const auxGifts = gifts.filter(gift => gift.id !== id);
-        setGifts(auxGifts);
-    }
-    
-    console.log(gifts);
 
+        const action = {
+            type: 'addTodo',
+            payload: newGift
+        }
+
+        dispatch( action );
+        
+    }
+    
+    const handleDeleteGift = (giftId) => {
+
+        const action = {
+            type: 'deleteTodo',
+            payload: giftId
+        }
+
+        dispatch( action );
+    }
+    
     return (
         <div className='list'>
             <h1>Gifts</h1>
