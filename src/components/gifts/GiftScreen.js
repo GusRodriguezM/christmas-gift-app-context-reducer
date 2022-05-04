@@ -3,6 +3,7 @@ import React, { useReducer } from 'react';
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
 import { giftsReducer } from '../../reducers/giftsReducer';
+import { EmptyList } from './EmptyList';
 
 const initialState = [
     {id: 1, name: 'socks'},
@@ -49,9 +50,15 @@ export const GiftScreen = () => {
     return (
         <div className='list'>
             <h1>Gifts</h1>
-            
+
             <GiftForm handleAddGift={handleAddGift} />
-            <GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} />
+
+            {
+                (gifts.length === 0)
+                    ?   (<EmptyList />) 
+                    :   (<GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} />)
+            }
+            
 
             <button
                 onClick={handleCleanList}
