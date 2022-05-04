@@ -36,12 +36,28 @@ export const GiftScreen = () => {
 
         dispatch( action );
     }
+
+    const handleCleanList = () => {
+        
+        const action = {
+            type: 'cleanList'
+        }
+
+        dispatch( action );
+    }
     
     return (
         <div className='list'>
             <h1>Gifts</h1>
+            
             <GiftForm handleAddGift={handleAddGift} />
             <GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} />
+
+            <button
+                onClick={handleCleanList}
+            >
+                Delete all
+            </button>
         </div>
     )
 }

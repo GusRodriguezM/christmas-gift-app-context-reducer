@@ -14,8 +14,8 @@ export const giftsReducer = (state = [], action) => {
         case 'deleteTodo':
             return state.filter(gift => gift.id !== action.payload);
 
-        // case cleanList:
-        //     break;
+        case 'cleanList':
+            return [];
     
         default:
             break;
