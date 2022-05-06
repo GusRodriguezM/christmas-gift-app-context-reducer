@@ -6,11 +6,11 @@ import { giftsReducer } from '../../reducers/giftsReducer';
 import { EmptyList } from './EmptyList';
 
 const initialState = [
-    {id: 1, name: 'socks'},
-    {id: 2, name: 'ugly sweater'},
-    {id: 3, name: 'Santa\'s hat'},
-    {id: 4, name: 'snow sled'},
-    {id: 5, name: 'snowball gun'}
+    {id: 1, name: 'socks', quantity: 1},
+    {id: 2, name: 'ugly sweater', quantity: 1},
+    {id: 3, name: 'Santa\'s hat', quantity: 1},
+    {id: 4, name: 'snow sled', quantity: 1},
+    {id: 5, name: 'snowball gun', quantity: 1}
 ];
 
 export const GiftScreen = () => {
