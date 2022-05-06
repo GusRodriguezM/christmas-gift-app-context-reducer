@@ -19,13 +19,20 @@ export const GiftScreen = () => {
     
     const handleAddGift = (newGift) => {
 
-        const action = {
-            type: 'addTodo',
-            payload: newGift
+        const duplicate = gifts.some(gift => gift.name.toLowerCase() === newGift.name.toLowerCase());
+
+        if(duplicate){
+            console.log('Please do not repeat the gift');
+        }else{
+
+            const action = {
+                type: 'addTodo',
+                payload: newGift
+            }
+    
+            dispatch( action );
         }
 
-        dispatch( action );
-        
     }
     
     const handleDeleteGift = (giftId) => {

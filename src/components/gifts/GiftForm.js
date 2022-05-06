@@ -29,6 +29,7 @@ export const GiftForm = ({ handleAddGift }) => {
 
             <button
                 type='submit'
+                disabled={name === '' ? true : false}
             >
                 Add a gift
             </button>
