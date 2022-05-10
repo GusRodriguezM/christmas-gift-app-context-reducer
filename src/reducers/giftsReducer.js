@@ -3,6 +3,7 @@ export const giftsReducer = (state = [], action) => {
 
     switch (action.type) {
         case 'addTodo':
+            console.log(action);
             return [...state, action.payload];
         
         // case editTodo:

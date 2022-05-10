@@ -1,21 +1,18 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
 import { giftsReducer } from '../../reducers/giftsReducer';
 import { EmptyList } from './EmptyList';
+import { apiGifts } from '../../helpers/apiGifts';
 
-const initialState = [
-    {id: 1, name: 'socks', quantity: 1},
-    {id: 2, name: 'ugly sweater', quantity: 1},
-    {id: 3, name: 'Santa\'s hat', quantity: 1},
-    {id: 4, name: 'snow sled', quantity: 1},
-    {id: 5, name: 'snowball gun', quantity: 1}
-];
+const init = () => {
+    return JSON.parse(localStorage.getItem('gifts')) || [];
+}
 
 export const GiftScreen = () => {
 
-    const [gifts, dispatch] = useReducer(giftsReducer, initialState);
+    const [gifts, dispatch] = useReducer(giftsReducer, [], init);
     
     const handleAddGift = (newGift) => {
 
@@ -53,6 +50,12 @@ export const GiftScreen = () => {
 
         dispatch( action );
     }
+
+    useEffect(() => {
+        apiGifts.saveGifts(gifts)
+            .then(console.log)
+            .catch(console.log)
+    }, [gifts]);
     
     return (
         <div className='list'>
