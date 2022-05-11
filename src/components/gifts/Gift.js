@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Gift = ({ id, name, quantity, image, handleDeleteGift }) => {
+export const Gift = ({ id, name, quantity, image, person, handleDeleteGift }) => {
     return (
         <div>
 
@@ -8,6 +8,7 @@ export const Gift = ({ id, name, quantity, image, handleDeleteGift }) => {
 
             {name}
             {quantity}
+            {person}
             
 
             <button
