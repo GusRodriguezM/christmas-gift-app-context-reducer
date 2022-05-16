@@ -8,10 +8,11 @@ export const GiftForm = ({ handleAddGift }) => {
         name: '',
         quantity: '',
         image: '',
-        person: ''
+        person: '',
+        price: ''
     });
     
-    const { name, quantity, image, person } = formValues;
+    const { name, quantity, image, person, price } = formValues;
 
     const handleInputChange = ({ target }) => {
         setFormValues({
@@ -27,7 +28,8 @@ export const GiftForm = ({ handleAddGift }) => {
             name: name,
             quantity: quantity,
             image: image,
-            person: person
+            person: person,
+            price: price
         });
     }
 
@@ -36,8 +38,6 @@ export const GiftForm = ({ handleAddGift }) => {
         const randomGift = defaultGifts[rand];
         setFormValues({...formValues, name: randomGift.name});
     }
-
-    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -81,6 +81,20 @@ export const GiftForm = ({ handleAddGift }) => {
                 name='person'
                 value={person}
                 autoComplete='off'
+                onChange={handleInputChange}
+            />
+
+            <input
+                type='number'
+                name='price'
+                placeholder='Price'
+                value={price}
+                autoComplete='off'
+                min={1}
+                max={9999}
+                minLength={1}
+                maxLength={3}
+                required
                 onChange={handleInputChange}
             />
 
