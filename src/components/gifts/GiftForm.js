@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { useForm } from '../../hooks/useForm';
+import { defaultGifts } from '../../helpers/defaultGifts';
 
 export const GiftForm = ({ handleAddGift }) => {
 
-    const [formValues, handleInputChange, reset] = useForm({
+    const [formValues, setFormValues] = useState({
         name: '',
         quantity: '',
         image: '',
@@ -12,6 +12,13 @@ export const GiftForm = ({ handleAddGift }) => {
     });
     
     const { name, quantity, image, person } = formValues;
+
+    const handleInputChange = ({ target }) => {
+        setFormValues({
+            ...formValues,
+            [target.name]: target.value
+        });
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,8 +29,15 @@ export const GiftForm = ({ handleAddGift }) => {
             image: image,
             person: person
         });
-        reset();
     }
+
+    const handleGetRandomGift = () => {
+        const rand = Math.floor(Math.random() * defaultGifts.length);
+        const randomGift = defaultGifts[rand];
+        setFormValues({...formValues, name: randomGift.name});
+    }
+
+    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -35,6 +49,10 @@ export const GiftForm = ({ handleAddGift }) => {
                 autoComplete='off'
                 onChange={handleInputChange}
             />
+
+            <button onClick={handleGetRandomGift}>
+                Surprise!
+            </button>
 
             <input 
                 type='number'
