@@ -4,13 +4,15 @@ import { defaultGifts } from '../../helpers/defaultGifts';
 
 export const GiftForm = ({ handleAddGift }) => {
 
-    const [formValues, setFormValues] = useState({
+    const initValues = {
         name: '',
         quantity: '',
         image: '',
         person: '',
         price: ''
-    });
+    }
+
+    const [formValues, setFormValues] = useState(initValues);
     
     const { name, quantity, image, person, price } = formValues;
 
@@ -29,8 +31,11 @@ export const GiftForm = ({ handleAddGift }) => {
             quantity: quantity,
             image: image,
             person: person,
-            price: price
+            price: price,
+            total: quantity * price
         });
+
+        setFormValues(initValues);
     }
 
     const handleGetRandomGift = () => {

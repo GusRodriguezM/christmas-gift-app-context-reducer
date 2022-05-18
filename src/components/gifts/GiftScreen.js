@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
@@ -13,6 +13,7 @@ const init = () => {
 export const GiftScreen = () => {
 
     const [gifts, dispatch] = useReducer(giftsReducer, [], init);
+    const [total, setTotal] = useState(0);
     
     const handleAddGift = (newGift) => {
 
@@ -56,6 +57,19 @@ export const GiftScreen = () => {
             .then(console.log)
             .catch(console.log)
     }, [gifts]);
+
+    useEffect(() => {
+        let auxTotal = [];
+
+        if(gifts.length !== 0){
+            gifts.map(gift => auxTotal.push(gift.total));
+            setTotal( auxTotal.reduce((prevVal, currVal) => prevVal + currVal) );
+        }else{
+            setTotal(0);
+        }
+      
+    }, [gifts]);
+    
     
     return (
         <div className='list'>
@@ -68,6 +82,10 @@ export const GiftScreen = () => {
                     ?   (<EmptyList />) 
                     :   (<GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} />)
             }
+
+            <div>
+                {`Total: ${total}`}
+            </div>
             
 
             <button
