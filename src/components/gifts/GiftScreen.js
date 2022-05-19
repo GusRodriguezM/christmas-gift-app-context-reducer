@@ -43,6 +43,10 @@ export const GiftScreen = () => {
         dispatch( action );
     }
 
+    const handleDuplicateGift = (id) => {
+        console.log(id);
+    }
+
     const handleCleanList = () => {
         
         const action = {
@@ -80,7 +84,7 @@ export const GiftScreen = () => {
             {
                 (gifts.length === 0)
                     ?   (<EmptyList />) 
-                    :   (<GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} />)
+                    :   (<GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} handleDuplicateGift={handleDuplicateGift} />)
             }
 
             <div>

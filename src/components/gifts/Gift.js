@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Gift = ({ id, name, quantity, image, person, price, handleDeleteGift }) => {
+export const Gift = ({ id, name, quantity, image, person, price, handleDeleteGift, handleDuplicateGift }) => {
     return (
         <div>
 
@@ -12,10 +12,17 @@ export const Gift = ({ id, name, quantity, image, person, price, handleDeleteGif
             
 
             <button
+                onClick={() => handleDuplicateGift(id)}
+            >
+                Duplicate
+            </button>
+
+            <button
                 onClick={() => handleDeleteGift(id)}
             >
                 Delete
             </button>
+
         </div>
     )
 }
