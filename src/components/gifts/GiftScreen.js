@@ -5,6 +5,7 @@ import { GiftsList } from './GiftsList';
 import { giftsReducer } from '../../reducers/giftsReducer';
 import { EmptyList } from './EmptyList';
 import { apiGifts } from '../../helpers/apiGifts';
+import { Modal } from '../modal/Modal';
 
 const init = () => {
     return JSON.parse(localStorage.getItem('gifts')) || [];
@@ -14,6 +15,7 @@ export const GiftScreen = () => {
 
     const [gifts, dispatch] = useReducer(giftsReducer, [], init);
     const [total, setTotal] = useState(0);
+    const [show, setShow] = useState(false);
     
     const handleAddGift = (newGift) => {
 
@@ -76,10 +78,19 @@ export const GiftScreen = () => {
     
     
     return (
+
         <div className='list'>
             <h1>Gifts</h1>
 
-            <GiftForm handleAddGift={handleAddGift} />
+            <button
+                onClick={() => setShow(true)}
+            >
+                Add Gift
+            </button>
+
+            <Modal show={show} title='My modal' onClose={() => setShow(false)} >
+                <GiftForm handleAddGift={handleAddGift} />
+            </Modal>
 
             {
                 (gifts.length === 0)

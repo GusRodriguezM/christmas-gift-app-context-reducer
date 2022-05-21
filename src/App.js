@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { GiftScreen } from './components/gifts/GiftScreen';
 
 import './App.css';
