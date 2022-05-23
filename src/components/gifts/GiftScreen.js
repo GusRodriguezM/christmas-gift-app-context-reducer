@@ -1,19 +1,15 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer, useContext } from 'react';
 
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
-import { giftsReducer } from '../../reducers/giftsReducer';
 import { EmptyList } from './EmptyList';
 import { apiGifts } from '../../helpers/apiGifts';
 import { Modal } from '../modal/Modal';
-
-const init = () => {
-    return JSON.parse(localStorage.getItem('gifts')) || [];
-}
+import { GiftContext } from '../../context/GiftContext';
 
 export const GiftScreen = () => {
 
-    const [gifts, dispatch] = useReducer(giftsReducer, [], init);
+    const { gifts, dispatch } = useContext(GiftContext);
     const [total, setTotal] = useState(0);
     const [show, setShow] = useState(false);
     
