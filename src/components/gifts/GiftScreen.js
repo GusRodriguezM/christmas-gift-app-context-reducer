@@ -7,7 +7,6 @@ import { apiGifts } from '../../helpers/apiGifts';
 import { Modal } from '../modal/Modal';
 import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
-import { addNewGift } from '../../actions/gifts';
 
 export const GiftScreen = () => {
 
@@ -15,16 +14,6 @@ export const GiftScreen = () => {
     const { showModal, setShowModal} = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     
-    const handleDeleteGift = (giftId) => {
-
-        const action = {
-            type: 'deleteTodo',
-            payload: giftId
-        }
-
-        dispatch( action );
-    }
-
     const handleDuplicateGift = (id) => {
         console.log(id);
     }
@@ -75,7 +64,7 @@ export const GiftScreen = () => {
             {
                 (gifts.length === 0)
                     ?   (<EmptyList />) 
-                    :   (<GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} handleDuplicateGift={handleDuplicateGift} />)
+                    :   (<GiftsList gifts={gifts} handleDuplicateGift={handleDuplicateGift} />)
             }
 
             <div>

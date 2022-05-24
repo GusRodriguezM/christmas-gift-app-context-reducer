@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { deleteGift } from '../../actions/gifts';
+import { GiftContext } from '../../context/GiftContext';
 
-export const Gift = ({ id, name, quantity, image, person, price, handleDeleteGift, handleDuplicateGift }) => {
+export const Gift = ({ id, name, quantity, image, person, price, handleDuplicateGift }) => {
+
+    const { gifts, dispatch } = useContext(GiftContext);
+
+    const handleDeleteGift = () => {
+        dispatch( deleteGift(id) );
+    }
+
     return (
         <div>
 
@@ -18,7 +27,7 @@ export const Gift = ({ id, name, quantity, image, person, price, handleDeleteGif
             </button>
 
             <button
-                onClick={() => handleDeleteGift(id)}
+                onClick={handleDeleteGift}
             >
                 Delete
             </button>
