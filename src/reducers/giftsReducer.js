@@ -1,8 +1,9 @@
+import { types } from "../types/types";
 
 export const giftsReducer = (state = [], action) => {
 
     switch (action.type) {
-        case 'addTodo':
+        case types.addGift:
             console.log(action);
             return [...state, action.payload];
         
@@ -12,10 +13,10 @@ export const giftsReducer = (state = [], action) => {
         // case duplicateTodo:
         //     break;
 
-        case 'deleteTodo':
+        case types.deleteGift:
             return state.filter(gift => gift.id !== action.payload);
 
-        case 'cleanList':
+        case types.cleanList:
             return [];
     
         default:

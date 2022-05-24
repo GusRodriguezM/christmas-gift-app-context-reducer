@@ -7,30 +7,13 @@ import { apiGifts } from '../../helpers/apiGifts';
 import { Modal } from '../modal/Modal';
 import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
+import { addNewGift } from '../../actions/gifts';
 
 export const GiftScreen = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
     const { showModal, setShowModal} = useContext(ModalContext);
     const [total, setTotal] = useState(0);
-    
-    const handleAddGift = (newGift) => {
-
-        const duplicate = gifts.some(gift => gift.name.toLowerCase() === newGift.name.toLowerCase());
-
-        if(duplicate){
-            console.log('Please do not repeat the gift');
-        }else{
-
-            const action = {
-                type: 'addTodo',
-                payload: newGift
-            }
-    
-            dispatch( action );
-        }
-
-    }
     
     const handleDeleteGift = (giftId) => {
 
@@ -86,7 +69,7 @@ export const GiftScreen = () => {
             </button>
 
             <Modal title='My modal'>
-                <GiftForm handleAddGift={handleAddGift} />
+                <GiftForm />
             </Modal>
 
             {

@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { addNewGift } from '../../actions/gifts';
+import { GiftContext } from '../../context/GiftContext';
 
 import { defaultGifts } from '../../helpers/defaultGifts';
 
-export const GiftForm = ({ handleAddGift }) => {
+export const GiftForm = () => {
+
+    const { gifts, dispatch } = useContext(GiftContext);
 
     const initValues = {
         name: '',
@@ -25,7 +29,8 @@ export const GiftForm = ({ handleAddGift }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleAddGift({
+
+        const newGift = {
             id: (+new Date()).toString(),
             name: name,
             quantity: quantity,
@@ -33,7 +38,15 @@ export const GiftForm = ({ handleAddGift }) => {
             person: person,
             price: price,
             total: quantity * price
-        });
+        }
+
+        const duplicate = gifts.some(gift => gift.name.toLowerCase() === newGift.name.toLowerCase());
+
+        if(duplicate){
+            console.log('Please do not repeat the gift');
+        }else{
+            dispatch( addNewGift(newGift) );
+        }
 
         setFormValues(initValues);
     }
