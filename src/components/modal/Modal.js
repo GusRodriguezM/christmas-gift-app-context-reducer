@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ModalContext } from '../../context/ModalContext';
 
 import './Modal.css';
 
-export const Modal = ({ show, title, children, onClose }) => {
+export const Modal = ({ title, children }) => {
 
-    if(!show){
+    const { showModal, setShowModal} = useContext(ModalContext);
+
+    if(!showModal){
         return null;
+    }
+
+    const closeModal = () => {
+        setShowModal(false);
     }
     
     return (
-        <div className='modal' onClick={onClose}>
+        <div className='modal' onClick={closeModal}>
             <div className='modal-content' onClick={e => e.stopPropagation()}>
                 <div className='modal-header'>
                     <h4 className='modal-title'>
@@ -23,7 +30,7 @@ export const Modal = ({ show, title, children, onClose }) => {
 
                 <div className='modal-footer'>
                     <button
-                        onClick={onClose} 
+                        onClick={closeModal}
                         className='button'
                     >
                         Close

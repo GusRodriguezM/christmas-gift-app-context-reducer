@@ -1,21 +1,18 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
-import { giftsReducer } from '../../reducers/giftsReducer';
 import { EmptyList } from './EmptyList';
 import { apiGifts } from '../../helpers/apiGifts';
 import { Modal } from '../modal/Modal';
-
-const init = () => {
-    return JSON.parse(localStorage.getItem('gifts')) || [];
-}
+import { GiftContext } from '../../context/GiftContext';
+import { ModalContext } from '../../context/ModalContext';
 
 export const GiftScreen = () => {
 
-    const [gifts, dispatch] = useReducer(giftsReducer, [], init);
+    const { gifts, dispatch } = useContext(GiftContext);
+    const { showModal, setShowModal} = useContext(ModalContext);
     const [total, setTotal] = useState(0);
-    const [show, setShow] = useState(false);
     
     const handleAddGift = (newGift) => {
 
@@ -83,12 +80,12 @@ export const GiftScreen = () => {
             <h1>Gifts</h1>
 
             <button
-                onClick={() => setShow(true)}
+                onClick={() => setShowModal(true)}
             >
                 Add Gift
             </button>
 
-            <Modal show={show} title='My modal' onClose={() => setShow(false)} >
+            <Modal title='My modal'>
                 <GiftForm handleAddGift={handleAddGift} />
             </Modal>
 
