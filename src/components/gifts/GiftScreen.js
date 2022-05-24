@@ -7,6 +7,7 @@ import { apiGifts } from '../../helpers/apiGifts';
 import { Modal } from '../modal/Modal';
 import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
+import { cleanList } from '../../actions/gifts';
 
 export const GiftScreen = () => {
 
@@ -19,12 +20,7 @@ export const GiftScreen = () => {
     }
 
     const handleCleanList = () => {
-        
-        const action = {
-            type: 'cleanList'
-        }
-
-        dispatch( action );
+        dispatch( cleanList() );
     }
 
     useEffect(() => {

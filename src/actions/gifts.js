@@ -9,3 +9,7 @@ export const deleteGift = (id) => ({
     type: types.deleteGift,
     payload: id
 });
+
+export const cleanList = () => ({
+    type: types.cleanList
+});
