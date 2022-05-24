@@ -8,11 +8,12 @@ import { Modal } from '../modal/Modal';
 import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
 import { cleanList } from '../../actions/gifts';
+import { openModal } from '../../actions/modal';
 
 export const GiftScreen = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
-    const { showModal, setShowModal} = useContext(ModalContext);
+    const { dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     
     const handleDuplicateGift = (id) => {
@@ -21,6 +22,10 @@ export const GiftScreen = () => {
 
     const handleCleanList = () => {
         dispatch( cleanList() );
+    }
+
+    const handleOpenModal = () => {
+        dispatchModal( openModal() );
     }
 
     useEffect(() => {
@@ -48,7 +53,7 @@ export const GiftScreen = () => {
             <h1>Gifts</h1>
 
             <button
-                onClick={() => setShowModal(true)}
+                onClick={handleOpenModal}
             >
                 Add Gift
             </button>

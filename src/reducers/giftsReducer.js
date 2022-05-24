@@ -20,7 +20,7 @@ export const giftsReducer = (state = [], action) => {
             return [];
     
         default:
-            break;
+            return state;
     }
 
 }

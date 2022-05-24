@@ -1,12 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { addNewGift } from '../../actions/gifts';
+import { closeModal } from '../../actions/modal';
 import { GiftContext } from '../../context/GiftContext';
+import { ModalContext } from '../../context/ModalContext';
 
 import { defaultGifts } from '../../helpers/defaultGifts';
 
 export const GiftForm = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
+    const { dispatchModal } = useContext(ModalContext);
 
     const initValues = {
         name: '',
@@ -49,6 +52,7 @@ export const GiftForm = () => {
         }
 
         setFormValues(initValues);
+        dispatchModal( closeModal() );
     }
 
     const handleGetRandomGift = () => {

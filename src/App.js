@@ -1,12 +1,13 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
-import { GiftScreen } from './components/gifts/GiftScreen';
 import { GiftContext } from './context/GiftContext';
+import { ModalContext } from './context/ModalContext';
 
 import { giftsReducer } from './reducers/giftsReducer';
+import { modalReducer } from './reducers/modalReducer';
 
+import { GiftScreen } from './components/gifts/GiftScreen';
 import './App.css';
-import { ModalContext } from './context/ModalContext';
 
 const init = () => {
   return JSON.parse(localStorage.getItem('gifts')) || [];
@@ -15,14 +16,11 @@ const init = () => {
 export const App = () => {
   
   const [gifts, dispatch] = useReducer(giftsReducer, [], init);
-  const [showModal, setShowModal] = useState(false);
+  const [statusModal, dispatchModal] = useReducer(modalReducer, false);
 
   return (
-    <GiftContext.Provider value={{
-      gifts,
-      dispatch
-    }} >
-      <ModalContext.Provider value={{showModal, setShowModal}}>
+    <GiftContext.Provider value={{gifts,dispatch}}>
+      <ModalContext.Provider value={{statusModal, dispatchModal}}>
         <div className='App'>
           <GiftScreen />
         </div>
