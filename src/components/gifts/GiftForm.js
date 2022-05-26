@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { addNewGift } from '../../actions/gifts';
 import { closeModal } from '../../actions/modal';
+import { ActiveGiftContext } from '../../context/ActiveGiftContext';
 import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
 
@@ -9,6 +10,7 @@ import { defaultGifts } from '../../helpers/defaultGifts';
 export const GiftForm = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
+    const { activeGift, dispatchActiveGift } = useContext(ActiveGiftContext);
     const { dispatchModal } = useContext(ModalContext);
 
     const initValues = {
@@ -22,6 +24,10 @@ export const GiftForm = () => {
     const [formValues, setFormValues] = useState(initValues);
     
     const { name, quantity, image, person, price } = formValues;
+
+    useEffect(() => {
+      activeGift ? setFormValues(activeGift) : setFormValues(initValues);
+    }, [activeGift]);
 
     const handleInputChange = ({ target }) => {
         setFormValues({

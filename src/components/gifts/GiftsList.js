@@ -1,7 +1,7 @@
 import React from 'react';
 import { Gift } from './Gift';
 
-export const GiftsList = ({ gifts, handleDuplicateGift }) => {
+export const GiftsList = ({ gifts }) => {
   return (
     <div>
         <ul>

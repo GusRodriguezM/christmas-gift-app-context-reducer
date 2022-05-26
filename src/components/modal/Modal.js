@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+import { deleteActiveGift } from '../../actions/activeGift';
 import { closeModal } from '../../actions/modal';
+import { ActiveGiftContext } from '../../context/ActiveGiftContext';
 import { ModalContext } from '../../context/ModalContext';
 
 import './Modal.css';
@@ -7,6 +9,7 @@ import './Modal.css';
 export const Modal = ({ title, children }) => {
 
     const { statusModal, dispatchModal } = useContext(ModalContext);
+    const { activeGift, dispatchActiveGift } = useContext(ActiveGiftContext);
 
     if(!statusModal){
         return null;
@@ -14,6 +17,7 @@ export const Modal = ({ title, children }) => {
 
     const handleCloseModal = () => {
         dispatchModal( closeModal() );
+        dispatchActiveGift( deleteActiveGift() );
     }
     
     return (
