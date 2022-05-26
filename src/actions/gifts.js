@@ -5,6 +5,11 @@ export const addNewGift = (newGift) => ({
     payload: newGift
 });
 
+export const editGift = (giftToEdit) => ({
+    type: types.editGift,
+    payload: giftToEdit
+});
+
 export const deleteGift = (id) => ({
     type: types.deleteGift,
     payload: id

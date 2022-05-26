@@ -18,7 +18,7 @@ const init = () => {
 export const App = () => {
   
   const [gifts, dispatch] = useReducer(giftsReducer, [], init);
-  const [activeGift, dispatchActiveGift] = useReducer(activeGiftReducer, {});
+  const [activeGift, dispatchActiveGift] = useReducer(activeGiftReducer, null);
   const [statusModal, dispatchModal] = useReducer(modalReducer, false);
 
   return (
