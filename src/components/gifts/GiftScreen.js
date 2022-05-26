@@ -65,7 +65,7 @@ export const GiftScreen = () => {
             {
                 (gifts.length === 0)
                     ?   (<EmptyList />) 
-                    :   (<GiftsList gifts={gifts} handleDuplicateGift={handleDuplicateGift} />)
+                    :   (<GiftsList gifts={gifts} />)
             }
 
             <div>

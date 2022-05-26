@@ -7,8 +7,10 @@ export const giftsReducer = (state = [], action) => {
             console.log(action);
             return [...state, action.payload];
         
-        // case editTodo:
-        //     break;
+        case types.editGift:
+            console.log(action.payload);
+            console.log(state.map(gift => gift.id === action.payload.id ? action.payload : gift))
+            break;
 
         // case duplicateTodo:
         //     break;

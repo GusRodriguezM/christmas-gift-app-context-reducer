@@ -7,7 +7,7 @@ export const GiftsList = ({ gifts, handleDuplicateGift }) => {
         <ul>
             {
                 gifts.map(gift => (
-                    <Gift key={gift.id} {...gift} handleDuplicateGift={handleDuplicateGift} />
+                    <Gift key={gift.id} {...gift} />
                 ))
             }
         </ul>
