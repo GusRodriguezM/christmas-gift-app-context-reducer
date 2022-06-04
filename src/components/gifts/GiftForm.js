@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { deleteActiveGift } from '../../actions/activeGift';
-import { addNewGift, editGift } from '../../actions/gifts';
+import { addNewGift, duplicateGift, editGift } from '../../actions/gifts';
 import { closeModal } from '../../actions/modal';
 import { ActiveGiftContext } from '../../context/ActiveGiftContext';
 import { GiftContext } from '../../context/GiftContext';
@@ -19,7 +19,7 @@ const initValues = {
 export const GiftForm = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
-    const { activeGift, dispatchActiveGift } = useContext(ActiveGiftContext);
+    const { option, activeGift, dispatchActiveGift } = useContext(ActiveGiftContext);
     const { dispatchModal } = useContext(ModalContext);
 
     const [formValues, setFormValues] = useState(initValues);
@@ -68,19 +68,42 @@ export const GiftForm = () => {
 
         }else{
 
-            const giftToEdit = {
-                id: activeGift.id,
-                name: name,
-                quantity: quantity,
-                image: image,
-                person: person,
-                price: price,
-                total: quantity * price
-            };
+            if(option === 'edit'){
+                const giftToEdit = {
+                    id: activeGift.id,
+                    name: name,
+                    quantity: quantity,
+                    image: image,
+                    person: person,
+                    price: price,
+                    total: quantity * price
+                };
+    
+                dispatch( editGift(giftToEdit) );
+                dispatchActiveGift( deleteActiveGift() );
+                dispatchModal( closeModal() );
+            }else if(option === 'duplicate'){
+                const idx = gifts.findIndex(gift => gift.id === activeGift.id);
 
-            dispatch( editGift(giftToEdit) );
-            dispatchActiveGift( deleteActiveGift() );
-            dispatchModal( closeModal() );
+                console.log(idx);
+
+                const giftToDuplicate = {
+                    id: (+new Date()).toString(),
+                    name: name,
+                    quantity: quantity,
+                    image: image,
+                    person: person,
+                    price: price,
+                    total: quantity * price
+                };
+
+                dispatch( duplicateGift(idx, giftToDuplicate) );
+                dispatchActiveGift( deleteActiveGift() );
+                dispatchModal( closeModal() );
+            }else{
+                return;
+            }
+
         }
 
     }

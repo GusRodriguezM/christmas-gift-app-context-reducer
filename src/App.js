@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 
 import { GiftContext } from './context/GiftContext';
 import { ModalContext } from './context/ModalContext';
@@ -20,10 +20,11 @@ export const App = () => {
   const [gifts, dispatch] = useReducer(giftsReducer, [], init);
   const [activeGift, dispatchActiveGift] = useReducer(activeGiftReducer, null);
   const [statusModal, dispatchModal] = useReducer(modalReducer, false);
+  const [option, setOption] = useState('');
 
   return (
     <GiftContext.Provider value={{gifts, dispatch}}>
-      <ActiveGiftContext.Provider value={{activeGift, dispatchActiveGift}}>
+      <ActiveGiftContext.Provider value={{activeGift, dispatchActiveGift, option, setOption}}>
         <ModalContext.Provider value={{statusModal, dispatchModal}}>
           <div className='App'>
             <GiftScreen />

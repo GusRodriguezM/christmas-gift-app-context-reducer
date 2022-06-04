@@ -10,7 +10,7 @@ export const Gift = ({ id, name, quantity, image, person, price }) => {
 
     const { gifts, dispatch } = useContext(GiftContext);
     const { dispatchModal } = useContext(ModalContext);
-    const { dispatchActiveGift } = useContext(ActiveGiftContext);
+    const { setOption, dispatchActiveGift } = useContext(ActiveGiftContext);
 
     const handleDeleteGift = () => {
         dispatch( deleteGift(id) );
@@ -28,10 +28,23 @@ export const Gift = ({ id, name, quantity, image, person, price }) => {
         }
 
         dispatchActiveGift( setActiveGift(giftToEdit) );
+        setOption('edit');
         dispatchModal( openModal() );
     }
 
     const handleDuplicateGift = () => {
+
+        const giftToDuplicate = {
+            id: id,
+            name: name,
+            quantity: quantity,
+            image: image,
+            person: person,
+            price: price
+        }
+
+        dispatchActiveGift( setActiveGift(giftToDuplicate) );
+        setOption('duplicate');
         dispatchModal( openModal() );
     }
 

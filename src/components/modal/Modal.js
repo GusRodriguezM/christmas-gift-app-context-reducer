@@ -9,7 +9,7 @@ import './Modal.css';
 export const Modal = ({ title, children }) => {
 
     const { statusModal, dispatchModal } = useContext(ModalContext);
-    const { activeGift, dispatchActiveGift } = useContext(ActiveGiftContext);
+    const { setOption, dispatchActiveGift } = useContext(ActiveGiftContext);
 
     if(!statusModal){
         return null;
@@ -17,6 +17,7 @@ export const Modal = ({ title, children }) => {
 
     const handleCloseModal = () => {
         dispatchModal( closeModal() );
+        setOption('');
         dispatchActiveGift( deleteActiveGift() );
     }
     

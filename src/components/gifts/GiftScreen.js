@@ -16,10 +16,6 @@ export const GiftScreen = () => {
     const { dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     
-    const handleDuplicateGift = (id) => {
-        console.log(id);
-    }
-
     const handleCleanList = () => {
         dispatch( cleanList() );
     }

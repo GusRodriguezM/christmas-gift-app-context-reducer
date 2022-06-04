@@ -18,3 +18,13 @@ export const deleteGift = (id) => ({
 export const cleanList = () => ({
     type: types.cleanList
 });
+
+export const duplicateGift = (id, giftToDuplicate) => ({
+    type: types.duplicateGift,
+    payload: {
+        id,
+        gift: {
+            ...giftToDuplicate
+        }
+    }
+});
