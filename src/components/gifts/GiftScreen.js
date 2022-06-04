@@ -7,52 +7,21 @@ import { apiGifts } from '../../helpers/apiGifts';
 import { Modal } from '../modal/Modal';
 import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
+import { cleanList } from '../../actions/gifts';
+import { openModal } from '../../actions/modal';
 
 export const GiftScreen = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
-    const { showModal, setShowModal} = useContext(ModalContext);
+    const { dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     
-    const handleAddGift = (newGift) => {
-
-        const duplicate = gifts.some(gift => gift.name.toLowerCase() === newGift.name.toLowerCase());
-
-        if(duplicate){
-            console.log('Please do not repeat the gift');
-        }else{
-
-            const action = {
-                type: 'addTodo',
-                payload: newGift
-            }
-    
-            dispatch( action );
-        }
-
-    }
-    
-    const handleDeleteGift = (giftId) => {
-
-        const action = {
-            type: 'deleteTodo',
-            payload: giftId
-        }
-
-        dispatch( action );
-    }
-
-    const handleDuplicateGift = (id) => {
-        console.log(id);
-    }
-
     const handleCleanList = () => {
-        
-        const action = {
-            type: 'cleanList'
-        }
+        dispatch( cleanList() );
+    }
 
-        dispatch( action );
+    const handleOpenModal = () => {
+        dispatchModal( openModal() );
     }
 
     useEffect(() => {
@@ -80,19 +49,19 @@ export const GiftScreen = () => {
             <h1>Gifts</h1>
 
             <button
-                onClick={() => setShowModal(true)}
+                onClick={handleOpenModal}
             >
                 Add Gift
             </button>
 
             <Modal title='My modal'>
-                <GiftForm handleAddGift={handleAddGift} />
+                <GiftForm />
             </Modal>
 
             {
                 (gifts.length === 0)
                     ?   (<EmptyList />) 
-                    :   (<GiftsList gifts={gifts} handleDeleteGift={handleDeleteGift} handleDuplicateGift={handleDuplicateGift} />)
+                    :   (<GiftsList gifts={gifts} />)
             }
 
             <div>

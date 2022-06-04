@@ -1,13 +1,13 @@
 import React from 'react';
 import { Gift } from './Gift';
 
-export const GiftsList = ({ gifts, handleDeleteGift, handleDuplicateGift }) => {
+export const GiftsList = ({ gifts }) => {
   return (
     <div>
         <ul>
             {
                 gifts.map(gift => (
-                    <Gift key={gift.id} {...gift} handleDeleteGift={handleDeleteGift} handleDuplicateGift={handleDuplicateGift} />
+                    <Gift key={gift.id} {...gift} />
                 ))
             }
         </ul>
