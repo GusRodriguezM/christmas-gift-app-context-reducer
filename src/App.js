@@ -21,11 +21,12 @@ export const App = () => {
   const [activeGift, dispatchActiveGift] = useReducer(activeGiftReducer, null);
   const [statusModal, dispatchModal] = useReducer(modalReducer, false);
   const [option, setOption] = useState('');
+  const [modalType, setModalType] = useState('form');
 
   return (
     <GiftContext.Provider value={{gifts, dispatch}}>
       <ActiveGiftContext.Provider value={{activeGift, dispatchActiveGift, option, setOption}}>
-        <ModalContext.Provider value={{statusModal, dispatchModal}}>
+        <ModalContext.Provider value={{statusModal, dispatchModal, modalType, setModalType}}>
           <div className='App'>
             <GiftScreen />
           </div>

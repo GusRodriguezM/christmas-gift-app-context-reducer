@@ -8,7 +8,7 @@ import './Modal.css';
 
 export const Modal = ({ title, children }) => {
 
-    const { statusModal, dispatchModal } = useContext(ModalContext);
+    const { setModalType, statusModal, dispatchModal } = useContext(ModalContext);
     const { setOption, dispatchActiveGift } = useContext(ActiveGiftContext);
 
     if(!statusModal){
@@ -18,6 +18,7 @@ export const Modal = ({ title, children }) => {
     const handleCloseModal = () => {
         dispatchModal( closeModal() );
         setOption('');
+        setModalType('form');
         dispatchActiveGift( deleteActiveGift() );
     }
     

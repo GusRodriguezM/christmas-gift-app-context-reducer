@@ -9,11 +9,12 @@ import { GiftContext } from '../../context/GiftContext';
 import { ModalContext } from '../../context/ModalContext';
 import { cleanList } from '../../actions/gifts';
 import { openModal } from '../../actions/modal';
+import { Visualize } from './Visualize';
 
 export const GiftScreen = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
-    const { dispatchModal } = useContext(ModalContext);
+    const { modalType, setModalType, dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     
     const handleCleanList = () => {
@@ -21,6 +22,11 @@ export const GiftScreen = () => {
     }
 
     const handleOpenModal = () => {
+        dispatchModal( openModal() );
+    }
+
+    const handleOpenModalToVisualize = () => {
+        setModalType('visualize');
         dispatchModal( openModal() );
     }
 
@@ -54,8 +60,14 @@ export const GiftScreen = () => {
                 Add Gift
             </button>
 
-            <Modal title='My modal'>
-                <GiftForm />
+            <Modal title={modalType === 'form' ? 'Form' : 'Visualize'}>
+                {
+                    modalType === 'form' ? (
+                        <GiftForm />
+                    ) : (
+                        <Visualize />
+                    )
+                }
             </Modal>
 
             {
@@ -74,6 +86,13 @@ export const GiftScreen = () => {
             >
                 Delete all
             </button>
+
+            <button
+                onClick={handleOpenModalToVisualize}
+            >
+                Visualize
+            </button>
+
         </div>
     )
 }
