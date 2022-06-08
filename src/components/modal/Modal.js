@@ -10,11 +10,7 @@ export const Modal = ({ title, children }) => {
 
     const { setModalType, statusModal, dispatchModal } = useContext(ModalContext);
     const { setOption, dispatchActiveGift } = useContext(ActiveGiftContext);
-
-    if(!statusModal){
-        return null;
-    }
-
+    
     const handleCloseModal = () => {
         dispatchModal( closeModal() );
         setOption('');
@@ -22,6 +18,10 @@ export const Modal = ({ title, children }) => {
         dispatchActiveGift( deleteActiveGift() );
     }
     
+    if(!statusModal){
+        return null;
+    }
+
     return (
         <div className='modal' onClick={handleCloseModal}>
             <div className='modal-content' onClick={e => e.stopPropagation()}>

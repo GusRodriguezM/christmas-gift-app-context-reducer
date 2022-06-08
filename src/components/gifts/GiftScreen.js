@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 
 import { GiftForm } from './GiftForm';
 import { GiftsList } from './GiftsList';
@@ -10,12 +10,15 @@ import { ModalContext } from '../../context/ModalContext';
 import { cleanList } from '../../actions/gifts';
 import { openModal } from '../../actions/modal';
 import { Visualize } from './Visualize';
+import { useReactToPrint } from 'react-to-print';
+import { GiftsListToPrint } from '../gifts/GiftsListToPrint';
 
 export const GiftScreen = () => {
 
     const { gifts, dispatch } = useContext(GiftContext);
     const { modalType, setModalType, dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
+    const componentRef = useRef();
     
     const handleCleanList = () => {
         dispatch( cleanList() );
@@ -29,6 +32,11 @@ export const GiftScreen = () => {
         setModalType('visualize');
         dispatchModal( openModal() );
     }
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: 'Gifts List'
+    });
 
     useEffect(() => {
         apiGifts.saveGifts(gifts)
@@ -70,6 +78,10 @@ export const GiftScreen = () => {
                 }
             </Modal>
 
+            <div style={{display: 'none'}}>
+                <GiftsListToPrint ref={componentRef} />
+            </div>
+
             {
                 (gifts.length === 0)
                     ?   (<EmptyList />) 
@@ -91,6 +103,12 @@ export const GiftScreen = () => {
                 onClick={handleOpenModalToVisualize}
             >
                 Visualize
+            </button>
+
+            <button
+                onClick={handlePrint}
+            >
+                Print
             </button>
 
         </div>
