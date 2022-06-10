@@ -8,7 +8,7 @@ import { ModalContext } from '../../context/ModalContext';
 
 export const Gift = ({ id, name, quantity, image, person, price }) => {
 
-    const { gifts, dispatch } = useContext(GiftContext);
+    const { dispatch } = useContext(GiftContext);
     const { dispatchModal } = useContext(ModalContext);
     const { setOption, dispatchActiveGift } = useContext(ActiveGiftContext);
 

@@ -3,10 +3,12 @@ import React, { useReducer, useState } from 'react';
 import { GiftContext } from './context/GiftContext';
 import { ModalContext } from './context/ModalContext';
 import { ActiveGiftContext } from './context/ActiveGiftContext';
+import { AuthContext } from './context/AuthContext';
 
 import { giftsReducer } from './reducers/giftsReducer';
 import { modalReducer } from './reducers/modalReducer';
 import { activeGiftReducer } from './reducers/activeGiftReducer';
+import { authReducer } from './reducers/authReducer';
 
 import { GiftScreen } from './components/gifts/GiftScreen';
 import './App.css';
@@ -15,11 +17,16 @@ const init = () => {
   return JSON.parse(localStorage.getItem('gifts')) || [];
 }
 
+const initUser = () => {
+  return JSON.parse(localStorage.getItem('user')) || {logged: false};
+}
+
 export const App = () => {
   
   const [gifts, dispatch] = useReducer(giftsReducer, [], init);
   const [activeGift, dispatchActiveGift] = useReducer(activeGiftReducer, null);
   const [statusModal, dispatchModal] = useReducer(modalReducer, false);
+  const [user, dispatchLogin] = useReducer(authReducer, {}, initUser);
   const [option, setOption] = useState('');
   const [modalType, setModalType] = useState('form');
 
@@ -27,9 +34,11 @@ export const App = () => {
     <GiftContext.Provider value={{gifts, dispatch}}>
       <ActiveGiftContext.Provider value={{activeGift, dispatchActiveGift, option, setOption}}>
         <ModalContext.Provider value={{statusModal, dispatchModal, modalType, setModalType}}>
-          <div className='App'>
-            <GiftScreen />
-          </div>
+          <AuthContext.Provider value={{user, dispatchLogin}}>
+            <div className='App'>
+              <GiftScreen />
+            </div>
+          </AuthContext.Provider>
         </ModalContext.Provider>
       </ActiveGiftContext.Provider>
     </GiftContext.Provider>
