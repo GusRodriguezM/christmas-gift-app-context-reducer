@@ -10,10 +10,9 @@ import { modalReducer } from './reducers/modalReducer';
 import { activeGiftReducer } from './reducers/activeGiftReducer';
 import { authReducer } from './reducers/authReducer';
 
-import { GiftScreen } from './components/gifts/GiftScreen';
 import './App.css';
 import { Navbar } from './components/navbar/Navbar';
-import { LoginScreen } from './components/auth/LoginScreen';
+import { AppRouter } from './routers/AppRouter';
 
 const init = () => {
   return JSON.parse(localStorage.getItem('gifts')) || [];
@@ -39,8 +38,7 @@ export const App = () => {
           <AuthContext.Provider value={{user, dispatchLogin}}>
             <div className='App'>
               <Navbar />
-              <LoginScreen />
-              <GiftScreen />
+              <AppRouter />
             </div>
           </AuthContext.Provider>
         </ModalContext.Provider>

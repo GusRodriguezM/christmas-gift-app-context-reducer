@@ -5,7 +5,7 @@ import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
 
-    const {user, dispatchLogin} = useContext(AuthContext);
+    const { dispatchLogin } = useContext(AuthContext);
 
     const [formValues, handleInputChange] = useForm({
         name: '',
