@@ -21,14 +21,17 @@ export const LoginScreen = () => {
     }
 
     return (
-        <>
-            <form onSubmit={handleLogin}>
+        <div className='login'>
+
+            <h1 className='login__title'>Login</h1>
+
+            <form onSubmit={handleLogin} className='login__form'>
 
                 <input 
                     type='text'
                     placeholder='Name'
                     name='name'
-                    className=''
+                    className='login__form--input'
                     autoComplete='off'
                     value={name}
                     onChange={handleInputChange}
@@ -38,7 +41,7 @@ export const LoginScreen = () => {
                     type='text'
                     placeholder='Email'
                     name='email'
-                    className=''
+                    className='login__form--input'
                     autoComplete='off'
                     value={email}
                     onChange={handleInputChange}
@@ -48,7 +51,7 @@ export const LoginScreen = () => {
                     type='text'
                     placeholder='Password'
                     name='password'
-                    className=''
+                    className='login__form--input'
                     autoComplete='off'
                     value={password}
                     onChange={handleInputChange}
@@ -56,12 +59,12 @@ export const LoginScreen = () => {
 
                 <button
                     type='submit'
-                    className=''
+                    className='login__form--button'
                 >
                     Login
                 </button>
 
             </form>
-        </>
+        </div>
     )
 }

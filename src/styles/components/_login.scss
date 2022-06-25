@@ -1,0 +1,41 @@
+@use '../base';
+
+.login {
+    width: 350px;
+    height: 350px;
+    margin-top: 5rem;
+    background: rgba( 211, 226, 236, 0.5 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login__title {
+    text-align: center;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__form--input {
+    margin: 10px 0 10px 0;
+    width: 250px;
+}
+
+.login__form--button {
+    width: 250px;
+    margin-top: 10px;
+    padding: 5px 0 5px 0;
+    background-color: base.$login-button;
+    color: base.$primary-white;
+    border: none;
+    border-radius: 5px;
+}
