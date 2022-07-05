@@ -59,11 +59,12 @@ export const GiftScreen = () => {
     
     return (
 
-        <div className='list'>
-            <h1>Gifts</h1>
+        <div className='gifts'>
+            <h1 className='gifts__title'>Gifts</h1>
 
             <button
                 onClick={handleOpenModal}
+                className='button'
             >
                 Add Gift
             </button>
@@ -88,28 +89,32 @@ export const GiftScreen = () => {
                     :   (<GiftsList gifts={gifts} />)
             }
 
-            <div>
+            <div className='gifts__total'>
                 {`Total: ${total}`}
             </div>
             
+            <div className='gifts__button-group'>
+                <button
+                    onClick={handleCleanList}
+                    className='button'
+                >
+                    Delete all
+                </button>
 
-            <button
-                onClick={handleCleanList}
-            >
-                Delete all
-            </button>
+                <button
+                    onClick={handleOpenModalToVisualize}
+                    className='button'
+                >
+                    Visualize
+                </button>
 
-            <button
-                onClick={handleOpenModalToVisualize}
-            >
-                Visualize
-            </button>
-
-            <button
-                onClick={handlePrint}
-            >
-                Print
-            </button>
+                <button
+                    onClick={handlePrint}
+                    className='button'
+                >
+                    Print
+                </button>
+            </div>
 
         </div>
     )
