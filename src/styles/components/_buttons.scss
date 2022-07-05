@@ -1,7 +1,7 @@
 @use '../base';
 
 .button {
-    padding: 10px 10px;
+    padding: 5px 5px;
     margin: 5px 0px 5px 0px;
     text-align: center;
     color: base.$primary-white;
@@ -10,6 +10,6 @@
     cursor: pointer;
     border: none;
     line-height: 1;
-    width: 120px;
+    width: 100px;
     font-size: .9rem;
 }

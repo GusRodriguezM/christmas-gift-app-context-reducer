@@ -90,7 +90,9 @@ export const GiftScreen = () => {
             }
 
             <div className='gifts__total'>
-                {`Total: ${total}`}
+                <h1>
+                    {`Total: ${total}`}
+                </h1>
             </div>
             
             <div className='gifts__button-group'>
