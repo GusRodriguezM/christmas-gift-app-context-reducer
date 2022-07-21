@@ -24,9 +24,9 @@ export const Modal = ({ title, children }) => {
         <div className='modal' onClick={handleCloseModal}>
             <div className='modal__content' onClick={e => e.stopPropagation()}>
                 <div className='modal__content--header'>
-                    <h4 className='modal__content--title'>
+                    <h3 className='modal__content--title'>
                         {title}
-                    </h4>
+                    </h3>
                 </div>
                 
                 <div className='modal__content--body'>

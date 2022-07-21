@@ -14,11 +14,13 @@
 
 .modal__content {
     width: 500px;
-    background-color: base.$modal-content;
+    height: 500px;
+    background-color: base.$list;
 }
 
 .modal__content--header, .modal__content--footer {
     padding: 10px;
+    height: 10%;
 }
 
 .modal__content--title {
@@ -27,6 +29,7 @@
 
 .modal__content--body {
     padding: 10px;
-    border-top: 1px solid base.$modal-body;
-    border-bottom: 1px solid base.$modal-body;
+    border-top: 1px solid base.$list;
+    border-bottom: 1px solid base.$list;
+    height: 80%;
 }
