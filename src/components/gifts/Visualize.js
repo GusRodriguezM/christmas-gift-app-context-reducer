@@ -9,7 +9,7 @@ export const Visualize = () => {
             {
                 gifts.map(gift => (
                     <div key={gift.id} className='visualize__gift'>
-                        <img style={{height: '100px', width: '100px'}} alt={gift.name} src={gift.image} />
+                        <img className='visualize__gift--image' alt={gift.name} src={gift.image} />
                         <div className='visualize__gift--info'>
                             <h4>{gift.name} - ({gift.quantity})</h4>
                             <h4>To: {gift.person}</h4>
