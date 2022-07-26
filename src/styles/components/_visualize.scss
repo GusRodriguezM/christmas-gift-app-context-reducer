@@ -1,0 +1,22 @@
+.visualize {
+    overflow: scroll;
+    height: 100%;
+}
+
+.visualize__gift {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0 10px 0;
+}
+
+.visualize__gift--info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.visualize__gift--image {
+    height: 100px;
+    width: 100px;
+}

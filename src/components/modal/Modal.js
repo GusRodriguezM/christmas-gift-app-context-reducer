@@ -4,8 +4,6 @@ import { closeModal } from '../../actions/modal';
 import { ActiveGiftContext } from '../../context/ActiveGiftContext';
 import { ModalContext } from '../../context/ModalContext';
 
-import './Modal.css';
-
 export const Modal = ({ title, children }) => {
 
     const { setModalType, statusModal, dispatchModal } = useContext(ModalContext);
@@ -24,18 +22,18 @@ export const Modal = ({ title, children }) => {
 
     return (
         <div className='modal' onClick={handleCloseModal}>
-            <div className='modal-content' onClick={e => e.stopPropagation()}>
-                <div className='modal-header'>
-                    <h4 className='modal-title'>
+            <div className='modal__content' onClick={e => e.stopPropagation()}>
+                <div className='modal__content--header'>
+                    <h3 className='modal__content--title'>
                         {title}
-                    </h4>
+                    </h3>
                 </div>
                 
-                <div className='modal-body'>
+                <div className='modal__content--body'>
                     {children}
                 </div>
 
-                <div className='modal-footer'>
+                <div className='modal__content--footer'>
                     <button
                         onClick={handleCloseModal}
                         className='button'

@@ -4,11 +4,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.list {
-  height: 500px;
-  width: 500px;
-  background-color: azure;
-  text-align: center;
-  margin-top: 50px;
-}

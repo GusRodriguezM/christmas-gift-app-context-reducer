@@ -3,8 +3,6 @@ import { AuthContext } from '../../context/AuthContext';
 import { logout } from '../../actions/auth';
 import { apiAuth } from '../../helpers/apiAuth';
 
-import './Navbar.css';
-
 export const Navbar = () => {
 
     const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -23,16 +21,16 @@ export const Navbar = () => {
     }, [user]);
 
     return (
-        <nav className='navigation'>
-            <a href='/' className='brand-name'>
+        <nav className='navbar'>
+            <a href='/' className='navbar__brand-name'>
                 Christmas Gift App
             </a>
 
-            <button className='hamburger' onClick={() => setIsNavExpanded(!isNavExpanded)}>
+            <button className='navbar__hamburger' onClick={() => setIsNavExpanded(!isNavExpanded)}>
                 <i className="fa-solid fa-bars"></i>
             </button>
 
-            <div className={isNavExpanded ? 'navigation-menu expanded' : 'navigation-menu'}>
+            <div className={isNavExpanded ? 'navbar__navigation-menu expanded' : 'navbar__navigation-menu'}>
                 {
                     logged && (
                         <ul>

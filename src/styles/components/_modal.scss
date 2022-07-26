@@ -1,0 +1,35 @@
+@use '../base';
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: base.$modal-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__content {
+    width: 500px;
+    height: 500px;
+    background-color: base.$list;
+}
+
+.modal__content--header, .modal__content--footer {
+    padding: 10px;
+    height: 10%;
+}
+
+.modal__content--title {
+    margin: 0;
+}
+
+.modal__content--body {
+    padding: 10px;
+    border-top: 1px solid base.$list;
+    border-bottom: 1px solid base.$list;
+    height: 80%;
+}

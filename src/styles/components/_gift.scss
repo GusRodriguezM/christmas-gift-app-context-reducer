@@ -1,0 +1,17 @@
+.gift {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 0 10px 0;
+}
+
+.gift__image {
+    height: 100px;
+    width: 100px;
+}
+
+.gift__section {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}

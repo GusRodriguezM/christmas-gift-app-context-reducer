@@ -49,28 +49,39 @@ export const Gift = ({ id, name, quantity, image, person, price }) => {
     }
 
     return (
-        <div>
+        <div className='gift'>
 
-            <img style={{height: '100px', width: '100px'}} alt={name} src={image} />
+            <img className='gift__image' alt={name} src={image} />
 
-            {name}
-            {person}
-            ({quantity}) - {quantity * price}
+            <div className='gift__section'>
+                <h3>
+                    {name}
+                </h3>
+                <h3>
+                    {person}
+                </h3>
+                <h3>
+                    ({quantity}) - {quantity * price}
+                </h3>
+            </div>
             
             <button
                 onClick={handleEditGift}
+                className='button'
             >
                 Edit
             </button>
 
             <button
                 onClick={handleDuplicateGift}
+                className='button'
             >
                 Duplicate
             </button>
 
             <button
                 onClick={handleDeleteGift}
+                className='button'
             >
                 Delete
             </button>

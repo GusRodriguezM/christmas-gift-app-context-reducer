@@ -116,17 +116,18 @@ export const GiftForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='form' >
             <input
                 type='text'
                 placeholder='Your gift'
                 name='name'
+                className='input'
                 value={name}
                 autoComplete='off'
                 onChange={handleInputChange}
             />
 
-            <button onClick={handleGetRandomGift}>
+            <button onClick={handleGetRandomGift} className='button'>
                 Surprise!
             </button>
 
@@ -134,6 +135,7 @@ export const GiftForm = () => {
                 type='number'
                 placeholder='Quantity'
                 name='quantity'
+                className='input-number'
                 value={quantity}
                 min={1}
                 max={100}
@@ -147,6 +149,7 @@ export const GiftForm = () => {
                 type='text'
                 placeholder='Your image'
                 name='image'
+                className='input'
                 value={image}
                 onChange={handleInputChange}
             />
@@ -155,6 +158,7 @@ export const GiftForm = () => {
                 type='text'
                 placeholder='To:'
                 name='person'
+                className='input'
                 value={person}
                 autoComplete='off'
                 onChange={handleInputChange}
@@ -163,6 +167,7 @@ export const GiftForm = () => {
             <input
                 type='number'
                 name='price'
+                className='input-number'
                 placeholder='Price'
                 value={price}
                 autoComplete='off'
@@ -176,6 +181,7 @@ export const GiftForm = () => {
 
             <button
                 type='submit'
+                className='button'
                 disabled={name === '' ? true : false}
             >
                 Add a gift
