@@ -19,6 +19,9 @@ export const GiftScreen = () => {
     const { modalType, setModalType, dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     const componentRef = useRef();
+    // const [disabled, setDisabled] = useState(false);
+
+    // gifts.length === 0 ? setDisabled(true) : setDisabled(false);
     
     const handleCleanList = () => {
         dispatch( cleanList() );
@@ -98,21 +101,24 @@ export const GiftScreen = () => {
             <div className='gifts__button-group'>
                 <button
                     onClick={handleCleanList}
-                    className='button'
+                    className={gifts.length === 0 ? 'disabled' : 'button'}
+                    disabled={gifts.length === 0 ? true : false}
                 >
                     Delete all
                 </button>
 
                 <button
                     onClick={handleOpenModalToVisualize}
-                    className='button'
+                    className={gifts.length === 0 ? 'disabled' : 'button'}
+                    disabled={gifts.length === 0 ? true : false}
                 >
                     Visualize
                 </button>
 
                 <button
                     onClick={handlePrint}
-                    className='button'
+                    className={gifts.length === 0 ? 'disabled' : 'button'}
+                    disabled={gifts.length === 0 ? true : false}
                 >
                     Print
                 </button>
