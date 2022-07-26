@@ -79,8 +79,8 @@ export const GiftScreen = () => {
                 }
             </Modal>
 
-            <div style={{display: 'none'}}>
-                <GiftsListToPrint ref={componentRef} />
+            <div className='gifts__listToPrint'>
+                <GiftsListToPrint ref={componentRef} total={total}/>
             </div>
 
             {
