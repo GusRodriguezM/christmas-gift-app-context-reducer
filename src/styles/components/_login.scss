@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .login__title {
@@ -23,6 +24,23 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.login__message {
+    width: 250px;
+    margin-bottom: 20px;
+    padding: 5px 0 5px 0;
+    background-color: base.$primary-red;
+    color: base.$primary-white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.display {
+    display: none;
 }
 
 .login__form--input {
