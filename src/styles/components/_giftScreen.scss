@@ -1,4 +1,5 @@
 @use '../base';
+@use '../util';
 
 .gifts {
     height: 600px;
@@ -17,12 +18,32 @@
 .gifts__title {
     margin-top: 10px;
     margin-bottom: 10px;
+
+    @include util.breakpoint-max(mobile-medium) {
+        font-size: 1.5em;
+    }
 }
 
 .gifts__total {
     margin: 10px 0 10px 0;
+
+    @include util.breakpoint-max(mobile-medium) {
+        font-size: .75em;
+    }
 }
 
 .gifts__listToPrint {
     display: none;
+}
+
+.button i, .disabled i {
+    @include util.breakpoint(mobile-medium-plus1, medium){
+        display: none;   
+    }
+}
+
+.button h4, .disabled h4 {
+    @include util.breakpoint-max(mobile-medium) {
+        display: none;
+    }
 }

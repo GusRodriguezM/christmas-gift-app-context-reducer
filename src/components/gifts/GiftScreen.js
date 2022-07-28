@@ -69,7 +69,8 @@ export const GiftScreen = () => {
                 onClick={handleOpenModal}
                 className='button'
             >
-                Add Gift
+                <h4>Add Gift</h4>
+                <i className="fa-solid fa-circle-plus"></i>
             </button>
 
             <Modal title={modalType === 'form' ? 'Form' : 'Visualize'}>
@@ -104,7 +105,8 @@ export const GiftScreen = () => {
                     className={gifts.length === 0 ? 'disabled' : 'button'}
                     disabled={gifts.length === 0 ? true : false}
                 >
-                    Delete all
+                    <h4>Delete all</h4>
+                    <i className="fa-solid fa-dumpster"></i>
                 </button>
 
                 <button
@@ -112,7 +114,8 @@ export const GiftScreen = () => {
                     className={gifts.length === 0 ? 'disabled' : 'button'}
                     disabled={gifts.length === 0 ? true : false}
                 >
-                    Visualize
+                    <h4>Visualize</h4>
+                    <i className="fa-solid fa-eye"></i>
                 </button>
 
                 <button
@@ -120,7 +123,8 @@ export const GiftScreen = () => {
                     className={gifts.length === 0 ? 'disabled' : 'button'}
                     disabled={gifts.length === 0 ? true : false}
                 >
-                    Print
+                    <h4>Print</h4>
+                    <i className="fa-solid fa-print"></i>
                 </button>
             </div>
 

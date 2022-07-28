@@ -22,7 +22,7 @@ $breakpoints: (
 };
 
 @mixin breakpoint-max($max-size) {
-    @media screen and (max-width: map-get($breakpoints, $max-width)) {
+    @media screen and (max-width: map-get($breakpoints, $max-size)) {
         @content
     }
 }
