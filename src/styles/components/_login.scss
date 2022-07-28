@@ -1,8 +1,9 @@
 @use '../base';
+@use '../util';
 
 .login {
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
     margin-top: 5rem;
     background: rgba( 211, 226, 236, 0.5 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -12,6 +13,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include util.breakpoint(mobile-medium, mobile-large) {
+        margin-inline: auto;
+        width: 300px;
+        height: 300px;
+    }
+
+    @include util.breakpoint(mobile-large-plus1, medium){
+        margin-inline: auto;
+        width: 350px;
+        height: 350px;
+    }
+
+    @include util.breakpoint(medium-plus1, large){
+        margin-inline: auto;
+        width: 400px;
+        height: 400px;
+    }
 }
 
 .login__title {
@@ -27,7 +46,7 @@
 }
 
 .login__message {
-    width: 250px;
+    width: 350px;
     margin-bottom: 20px;
     padding: 5px 0 5px 0;
     background-color: base.$primary-red;
@@ -37,6 +56,18 @@
     text-align: center;
     display: flex;
     justify-content: space-around;
+
+    @include util.breakpoint(mobile-medium, mobile-large) {
+        width: 200px
+    }
+
+    @include util.breakpoint(mobile-large-plus1, medium){
+        width: 250px
+    }
+
+    @include util.breakpoint(medium-plus1, large){
+        width: 300px
+    }
 }
 
 .display {
@@ -45,15 +76,39 @@
 
 .login__form--input {
     margin: 10px 0 10px 0;
-    width: 250px;
+    width: 350px;
+
+    @include util.breakpoint(mobile-medium, mobile-large) {
+        width: 200px;
+    }
+
+    @include util.breakpoint(mobile-large-plus1, medium){
+        width: 250px
+    }
+
+    @include util.breakpoint(medium-plus1, large){
+        width: 300px
+    }
 }
 
 .login__form--button {
-    width: 250px;
+    width: 350px;
     margin-top: 10px;
     padding: 5px 0 5px 0;
     background-color: base.$login-button;
     color: base.$primary-white;
     border: none;
     border-radius: 5px;
+
+    @include util.breakpoint(mobile-medium, mobile-large) {
+        width: 200px;
+    }
+
+    @include util.breakpoint(mobile-large-plus1, medium){
+        width: 250px
+    }
+
+    @include util.breakpoint(medium-plus1, large){
+        width: 300px
+    }
 }
