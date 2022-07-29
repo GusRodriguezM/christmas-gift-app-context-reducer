@@ -40,16 +40,20 @@
     @include util.breakpoint-max(mobile-medium){
         width: 50px;
     }
+
+    @include util.breakpoint(mobile-medium-plus1, large) {
+        width: 80px;
+    }
 }
 
 .button i, .disabled i {
-    @include util.breakpoint(mobile-medium-plus1, xlarge){
+    @include util.breakpoint(mobile-large-plus1, xlarge){
         display: none;
     }
 }
 
 .button h4, .disabled h4 {
-    @include util.breakpoint-max(mobile-medium) {
+    @include util.breakpoint-max(mobile-large) {
         display: none;
     }
 }
