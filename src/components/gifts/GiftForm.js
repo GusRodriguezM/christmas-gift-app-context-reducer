@@ -128,7 +128,8 @@ export const GiftForm = () => {
             />
 
             <button onClick={handleGetRandomGift} className='button'>
-                Surprise!
+                <h4>Surprise!</h4>
+                <i className="fa-solid fa-shuffle"></i>
             </button>
 
             <input 
@@ -184,7 +185,8 @@ export const GiftForm = () => {
                 className='button'
                 disabled={name === '' ? true : false}
             >
-                Add a gift
+                <h4>Add a gift</h4>
+                <i className="fa-solid fa-circle-plus"></i>
             </button>
         </form>
     )
