@@ -2,7 +2,7 @@
 @use '../util';
 
 .gifts {
-    height: 600px;
+    height: 630px;
     width: 90%;
     background-color: base.$list;
     text-align: center;
@@ -18,18 +18,10 @@
 .gifts__title {
     margin-top: 10px;
     margin-bottom: 10px;
-
-    @include util.breakpoint-max(mobile-medium) {
-        font-size: 1.5em;
-    }
 }
 
 .gifts__total {
     margin: 10px 0 10px 0;
-
-    @include util.breakpoint-max(mobile-medium) {
-        font-size: .75em;
-    }
 }
 
 .gifts__listToPrint {
@@ -52,7 +44,7 @@
     }
 }
 
-.button h4, .disabled h4 {
+.button span, .disabled span {
     @include util.breakpoint-max(mobile-large) {
         display: none;
     }

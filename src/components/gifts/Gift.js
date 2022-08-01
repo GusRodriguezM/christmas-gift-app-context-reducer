@@ -70,7 +70,7 @@ export const Gift = ({ id, name, quantity, image, person, price }) => {
                     onClick={handleEditGift}
                     className='button'
                 >
-                    <h4>Edit</h4>
+                    <span>Edit</span>
                     <i className='fa-solid fa-pen-to-square'></i>
                 </button>
 
@@ -78,7 +78,7 @@ export const Gift = ({ id, name, quantity, image, person, price }) => {
                     onClick={handleDuplicateGift}
                     className='button'
                 >
-                    <h4>Duplicate</h4>
+                    <span>Duplicate</span>
                     <i className="fa-solid fa-copy"></i>
                 </button>
 
@@ -86,7 +86,7 @@ export const Gift = ({ id, name, quantity, image, person, price }) => {
                     onClick={handleDeleteGift}
                     className='button'
                 >
-                    <h4>Delete</h4>
+                    <span>Delete</span>
                     <i className="fa-solid fa-trash"></i>
                 </button>
             </div>

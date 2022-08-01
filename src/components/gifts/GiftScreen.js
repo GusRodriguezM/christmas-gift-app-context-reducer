@@ -19,9 +19,6 @@ export const GiftScreen = () => {
     const { modalType, setModalType, dispatchModal } = useContext(ModalContext);
     const [total, setTotal] = useState(0);
     const componentRef = useRef();
-    // const [disabled, setDisabled] = useState(false);
-
-    // gifts.length === 0 ? setDisabled(true) : setDisabled(false);
     
     const handleCleanList = () => {
         dispatch( cleanList() );
@@ -69,7 +66,7 @@ export const GiftScreen = () => {
                 onClick={handleOpenModal}
                 className='button'
             >
-                <h4>Add Gift</h4>
+                <span>Add Gift</span>
                 <i className="fa-solid fa-circle-plus"></i>
             </button>
 
@@ -105,7 +102,7 @@ export const GiftScreen = () => {
                     className={gifts.length === 0 ? 'disabled' : 'button'}
                     disabled={gifts.length === 0 ? true : false}
                 >
-                    <h4>Delete all</h4>
+                    <span>Delete all</span>
                     <i className="fa-solid fa-dumpster"></i>
                 </button>
 
@@ -114,7 +111,7 @@ export const GiftScreen = () => {
                     className={gifts.length === 0 ? 'disabled' : 'button'}
                     disabled={gifts.length === 0 ? true : false}
                 >
-                    <h4>Visualize</h4>
+                    <span>Visualize</span>
                     <i className="fa-solid fa-eye"></i>
                 </button>
 
@@ -123,7 +120,7 @@ export const GiftScreen = () => {
                     className={gifts.length === 0 ? 'disabled' : 'button'}
                     disabled={gifts.length === 0 ? true : false}
                 >
-                    <h4>Print</h4>
+                    <span>Print</span>
                     <i className="fa-solid fa-print"></i>
                 </button>
             </div>
