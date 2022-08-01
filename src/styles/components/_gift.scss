@@ -31,13 +31,11 @@
 .gift__section {
     width: 300px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    overflow-wrap: break-word;
 
     @include util.breakpoint-max(medium) {
-        display: flex;
-        flex-direction: column;
         width: 50%;
-        overflow-wrap: break-word;
     }
 }
 

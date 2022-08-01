@@ -100,7 +100,7 @@ export const LoginScreen = () => {
                     type='submit'
                     className='login__form--button'
                 >
-                    Login
+                    <h4>Login</h4>
                 </button>
 
             </form>
