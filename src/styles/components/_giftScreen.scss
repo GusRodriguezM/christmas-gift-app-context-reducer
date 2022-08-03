@@ -1,7 +1,8 @@
 @use '../base';
+@use '../util';
 
 .gifts {
-    height: 600px;
+    height: 630px;
     width: 90%;
     background-color: base.$list;
     text-align: center;
@@ -25,4 +26,26 @@
 
 .gifts__listToPrint {
     display: none;
+}
+
+.gifts button {
+    @include util.breakpoint-max(mobile-medium){
+        width: 50px;
+    }
+
+    @include util.breakpoint(mobile-medium-plus1, large) {
+        width: 80px;
+    }
+}
+
+.button i, .disabled i {
+    @include util.breakpoint(mobile-large-plus1, xlarge){
+        display: none;
+    }
+}
+
+.button span, .disabled span {
+    @include util.breakpoint-max(mobile-large) {
+        display: none;
+    }
 }

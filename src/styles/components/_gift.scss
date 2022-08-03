@@ -1,17 +1,56 @@
+@use '../util';
+
 .gift {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    width: 100%;
     margin: 10px 0 10px 0;
+
+    @include util.breakpoint-max(medium) {
+        width: 90%;
+        display: flex;
+    }
 }
 
 .gift__image {
     height: 100px;
     width: 100px;
+
+    @include util.breakpoint-max(mobile-medium) {
+        height: 60px;
+        width: 60px;
+    }
+
+    @include util.breakpoint(mobile-medium-plus1, medium) {
+        height: 80px;
+        width: 80px;
+    }
 }
 
 .gift__section {
     width: 300px;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    overflow-wrap: break-word;
+
+    @include util.breakpoint-max(medium) {
+        width: 50%;
+    }
+}
+
+.gift__button-group {
+    display: flex;
+    justify-content: space-evenly;
+    width: 500px;
+    
+    @include util.breakpoint-max(medium) {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+    }
+
+    @include util.breakpoint(medium-plus1, large) {
+        width: 40%;
+    }
 }

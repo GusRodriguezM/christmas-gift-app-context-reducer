@@ -38,7 +38,8 @@ export const Modal = ({ title, children }) => {
                         onClick={handleCloseModal}
                         className='button'
                     >
-                        Close
+                        <span>Close</span>
+                        <i className="fa-solid fa-circle-xmark"></i>
                     </button>
                 </div>
             </div>
