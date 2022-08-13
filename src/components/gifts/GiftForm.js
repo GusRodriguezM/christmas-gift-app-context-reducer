@@ -115,6 +115,13 @@ export const GiftForm = () => {
         setFormValues({...formValues, name: randomGift.name});
     }
 
+    const isFormValid = () => {
+        if(name.length === 0 && quantity.length === 0 &&  image.length === 0 && person.length === 0 && price.length === 0)
+            return true;
+        else
+            return false;
+    }
+
     return (
         <form onSubmit={handleSubmit} className='form' >
             <input
@@ -124,6 +131,7 @@ export const GiftForm = () => {
                 className='input'
                 value={name}
                 autoComplete='off'
+                required
                 onChange={handleInputChange}
             />
 
@@ -153,6 +161,7 @@ export const GiftForm = () => {
                 className='input'
                 value={image}
                 onChange={handleInputChange}
+                required
             />
 
             <input 
@@ -163,6 +172,7 @@ export const GiftForm = () => {
                 value={person}
                 autoComplete='off'
                 onChange={handleInputChange}
+                required
             />
 
             <input
@@ -182,8 +192,8 @@ export const GiftForm = () => {
 
             <button
                 type='submit'
-                className='button'
-                disabled={name === '' ? true : false}
+                className={isFormValid() ? 'disabled' : 'button'}
+                disabled={isFormValid()}
             >
                 <span>Add a gift</span>
                 <i className="fa-solid fa-circle-plus"></i>
